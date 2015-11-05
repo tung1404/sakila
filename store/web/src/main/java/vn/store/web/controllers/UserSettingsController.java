@@ -9,10 +9,11 @@ import javax.faces.bean.SessionScoped;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import vn.store.jpa.domain.User;
 import vn.store.service.impl.UserService;
-import vn.store.web.init.SpringApplicationContext;
 import vn.store.web.utils.JSFUtils;
 import vn.store.web.views.Theme;
 
@@ -20,6 +21,7 @@ import vn.store.web.views.Theme;
  * @author K. Siva Prasad Reddy
  * Date : 24-Aug-2013
  */
+@Component
 @ManagedBean
 @SessionScoped
 public class UserSettingsController implements Serializable
@@ -27,6 +29,7 @@ public class UserSettingsController implements Serializable
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = LoggerFactory.getLogger(UserSettingsController.class);
 	
+	@Autowired
 	private UserService userService;
 	
 	private String selectedTheme = "aristo";
@@ -126,9 +129,9 @@ public class UserSettingsController implements Serializable
 	}
 	
 	public UserService getUserService() {
-        if(userService == null){
-            this.userService = SpringApplicationContext.getBean(UserService.class);
-        }
+//        if(userService == null){
+//            this.userService = SpringApplicationContext.getBean(UserService.class);
+//        }
         return userService;
     }
 	

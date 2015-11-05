@@ -10,9 +10,11 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import vn.store.jpa.domain.User;
 import vn.store.service.impl.UserService;
-import vn.store.web.init.SpringApplicationContext;
 import vn.store.web.utils.JSFUtils;
 import vn.store.web.views.ChangePassword;
 
@@ -20,12 +22,14 @@ import vn.store.web.views.ChangePassword;
  * @author Siva
  *
  */
+@Component
 @ManagedBean
 @SessionScoped
 public class UserController implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
+	@Autowired
 	private UserService userService;
 	
 	private User loginUser;
@@ -39,9 +43,9 @@ public class UserController implements Serializable
 	}
 	
 	public UserService getUserService() {
-        if(userService == null){
-            this.userService = SpringApplicationContext.getBean(UserService.class);
-        }
+//        if(userService == null){
+//            this.userService = SpringApplicationContext.getBean(UserService.class);
+//        }
 	    return userService;
     }
 	
